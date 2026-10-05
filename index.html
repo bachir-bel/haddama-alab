@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💪 هضامة ألعاب — الأكل الصحي للرياضيين في الجزائر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1410; --bg2:#101d16; --card:#14251c; --card2:#1a2f23;
+  --green:#2ecc71; --green2:#27ae60; --olive:#a3c585; --gold:#f1c40f;
+  --text:#eaf5ee; --muted:#9db8a8; --line:rgba(163,197,133,.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::selection{background:var(--green);color:#06210f}
+
+/* ===== شريط علوي ===== */
+nav{position:fixed;top:0;right:0;left:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 6%;background:rgba(11,20,16,.75);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-weight:900;font-size:1.35rem;display:flex;align-items:center;gap:8px}
+.logo span{color:var(--green)}
+nav a{color:var(--muted);text-decoration:none;margin-inline-start:22px;font-weight:700;transition:.25s}
+nav a:hover{color:var(--green)}
+@media(max-width:720px){nav a{display:none}}
+
+/* ===== الواجهة ===== */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:120px 6% 60px;position:relative;
+  background:radial-gradient(1100px 600px at 85% -10%,rgba(46,204,113,.18),transparent 60%),
+             radial-gradient(900px 500px at 10% 110%,rgba(241,196,15,.10),transparent 60%),var(--bg)}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(163,197,133,.06) 1px,transparent 1px);background-size:26px 26px;pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(46,204,113,.12);border:1px solid rgba(46,204,113,.35);
+  color:var(--green);padding:8px 18px;border-radius:999px;font-weight:700;font-size:.9rem;margin-bottom:22px;animation:float 3s ease-in-out infinite}
+.hero h1{font-size:clamp(2.2rem,6vw,4.4rem);font-weight:900;line-height:1.25;max-width:900px}
+.hero h1 .grad{background:linear-gradient(90deg,var(--green),var(--olive),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:1.15rem;max-width:640px;margin:22px auto 34px;line-height:1.9}
+.cta{display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn{padding:14px 34px;border-radius:14px;font-weight:800;font-size:1.05rem;text-decoration:none;transition:.3s;cursor:pointer;border:none;font-family:inherit}
+.btn-main{background:linear-gradient(135deg,var(--green),var(--green2));color:#052012;box-shadow:0 10px 30px rgba(46,204,113,.35)}
+.btn-main:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(46,204,113,.5)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--green);color:var(--green)}
+.stats{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;margin-top:56px}
+.stat{text-align:center}
+.stat b{display:block;font-size:2.4rem;color:var(--green);font-weight:900}
+.stat small{color:var(--muted);font-weight:700}
+.emoji-rain{position:absolute;font-size:2rem;opacity:.18;animation:float 6s ease-in-out infinite;pointer-events:none}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+/* ===== شريط المكونات المتحرك ===== */
+.marquee{overflow:hidden;background:var(--bg2);border-block:1px solid var(--line);padding:16px 0;white-space:nowrap}
+.marquee-track{display:inline-block;animation:slide 28s linear infinite;font-weight:800;color:var(--olive);font-size:1.05rem}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(50%)}}
+
+/* ===== الأقسام ===== */
+section{padding:90px 6%}
+.sec-head{text-align:center;margin-bottom:48px}
+.sec-head .tag{color:var(--green);font-weight:800;letter-spacing:1px}
+.sec-head h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-top:8px}
+.sec-head p{color:var(--muted);margin-top:10px;max-width:600px;margin-inline:auto;line-height:1.8}
+
+/* ===== الفلاتر ===== */
+.filters{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.chip{padding:11px 26px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);
+  font-weight:800;font-family:inherit;font-size:.95rem;cursor:pointer;transition:.25s}
+.chip.active,.chip:hover{background:var(--green);color:#052012;border-color:var(--green)}
+
+/* ===== بطاقات الوجبات ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:22px;max-width:1250px;margin-inline:auto}
+.card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:20px;padding:24px;
+  position:relative;overflow:hidden;transition:.35s cubic-bezier(.2,.8,.2,1);animation:pop .5s both}
+.card:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(46,204,113,.5);box-shadow:0 20px 45px rgba(0,0,0,.45)}
+.card::after{content:"";position:absolute;top:-60px;left:-60px;width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(46,204,113,.15),transparent 70%)}
+.card .emoji{font-size:2.6rem;display:block;margin-bottom:14px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.4))}
+.card h3{font-size:1.08rem;font-weight:800;line-height:1.6;margin-bottom:14px;min-height:3.2em}
+.meta{display:flex;gap:8px;flex-wrap:wrap}
+.pill{font-size:.8rem;font-weight:800;padding:6px 12px;border-radius:999px;background:rgba(46,204,113,.12);color:var(--green);border:1px solid rgba(46,204,113,.25)}
+.pill.gold{background:rgba(241,196,15,.1);color:var(--gold);border-color:rgba(241,196,15,.25)}
+@keyframes pop{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== لنصائح ===== */
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;max-width:1250px;margin-inline:auto}
+.tip{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;transition:.3s}
+.tip:hover{border-color:var(--olive);transform:translateY(-6px)}
+.tip .ic{font-size:2.2rem;margin-bottom:12px;display:block}
+.tip h3{font-weight:800;margin-bottom:8px}
+.tip p{color:var(--muted);line-height:1.8;font-size:.95rem}
+
+footer{text-align:center;padding:44px 6%;border-top:1px solid var(--line);color:var(--muted);background:var(--bg2)}
+footer b{color:var(--green)}
+.reveal{opacity:0;transform:translateY(40px);transition:.7s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🥗 <span>هضامة</span> ألعاب</div>
+  <div>
+    <a href="#meals">الوجبات</a>
+    <a href="#breakfast">الإفطار</a>
+    <a href="#tips">نصائح</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="emoji-rain" style="top:18%;right:8%">🫒</span>
+  <span class="emoji-rain" style="top:30%;left:10%;animation-delay:1s">💪</span>
+  <span class="emoji-rain" style="bottom:20%;right:15%;animation-delay:2s">🍎</span>
+  <span class="emoji-rain" style="bottom:28%;left:8%;animation-delay:.5s">🏋️</span>
+  <span class="emoji-rain" style="top:55%;right:45%;animation-delay:1.5s">🥑</span>
+
+  <div class="badge">🇩🇿 صُنع بمكونات جزائرية 100%</div>
+  <h1>غذاء <span class="grad">بطل الجزائر</span> يبدأ من مائدتنا التقليدية 💪🔥</h1>
+  <p>دليلك الشامل للأكل الصحي للرياضيين: 40 وجبة رئيسية و15 وجبة إفطار وطاقة، كلها مبنية على المكونات المحلية — من الكسكس والفريك إلى الزيتون الجبلي والتمر الصحرواي.</p>
+  <div class="cta">
+    <a href="#meals" class="btn btn-main">🍽️ اكتشف الوجبات</a>
+    <a href="#breakfast" class="btn btn-ghost">☀️ وجبات الصباح</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>40</b><small>وجبة صحية رئيسية</small></div>
+    <div class="stat"><b>15</b><small>وجبة إفطار وطاقة</small></div>
+    <div class="stat"><b>100%</b><small>مكونات جزائرية</small></div>
+  </div>
+</header>
+
+<div class="marquee"><div class="marquee-track" id="marquee"></div></div>
+
+<section id="meals">
+  <div class="sec-head reveal">
+    <div class="tag">🍽️ الوجبات الرئيسية</div>
+    <h2>40 وجبة صحية للرياضيين</h2>
+    <p>بروتين عالٍ، دهون صحية، وكربوهيدرات معقدة — من مطبخنا الجزائري مباشرة إلى عضلاتك.</p>
+  </div>
+  <div class="filters reveal">
+    <button class="chip active" data-f="all">الكل 🌍</button>
+    <button class="chip" data-f="low">قليلة السعرات 🔥</button>
+    <button class="chip" data-f="high">عالية البروتين 💪</button>
+  </div>
+  <div class="grid" id="mealsGrid"></div>
+</section>
+
+<section id="breakfast" style="background:var(--bg2)">
+  <div class="sec-head reveal">
+    <div class="tag">☀️ صباح الطاقة</div>
+    <h2>15 وجبة إفطار وطاقة</h2>
+    <p>ابدأ يومك كبطل — وقود طبيعي من التمر والشوفان والحليب قبل التمرين أو في الصباح الباكر.</p>
+  </div>
+  <div class="grid" id="brkGrid"></div>
+</section>
+
+<section id="tips">
+  <div class="sec-head reveal">
+    <div class="tag">🧠 نصائح ذهبية</div>
+    <h2>قواعد التغذية الرياضية الجزائرية</h2>
+  </div>
+  <div class="tips">
+    <div class="tip reveal"><span class="ic">🫒</span><h3>زيت الزيتون هو ملكك</h3><p>استبدل السمن والزيوت المهدرجة بزيت الزيتون البلدي — دهون صحية للقلب والمفاصل.</p></div>
+    <div class="tip reveal"><span class="ic">🌾</span><h3>كربوهيدرات معقدة</h3><p>الكسكس والفريك والشعير تعطيك طاقة مستمرة أثناء التمرين بدون ارتفاع سكر الدم.</p></div>
+    <div class="tip reveal"><span class="ic">🐟</span><h3>سمك مرتين أسبوعياً</h3><p>السردين والقاروص والحوت المشوي مصدر رائع لأوميغا 3 والبروتين الخالي من الدهون.</p></div>
+    <div class="tip reveal"><span class="ic">🌰</span><h3>تمر + مكسرات قبل التمرين</h3><p>الثمرات ثلاث مع اللوز أو الجوز قبل ساعة من التمرين = وقود طبيعي خارص.</p></div>
+    <div class="tip reveal"><span class="ic">💧</span><h3>رطوبة دائمة</h3><p>اشرب من 2.5 إلى 3 لترات ماء يومياً، وأضف رشة ملح في الأيام الحارة خاصة صيف الجزائر.</p></div>
+    <div class="tip reveal"><span class="ic">🍳</span><h3>بيض يومياً لا يضر</h3><p>من 2 إلى 4 بيضات يومياً مصدر بروتين كامل ورخيص متوفر في كل دكان.</p></div>
+  </div>
+</section>
+
+<footer>
+  صُنع بحب في الجزائر 🇩🇿 — <b>هضامة ألعاب</b> 🥗💪 | كل المكونات محلية، كل الأهداف عالمية 🏆
+</footer>
+
+<script>
+const meals = [{"name": "كسكس الدجاج بالخضار", "emoji": "🍲", "kcal": 450, "protein": 35}, {"name": "شوربة العدس بالكمون", "emoji": "🥣", "kcal": 320, "protein": 18}, {"name": "الحمص باللحم البقري القليل الدسم", "emoji": "🍛", "kcal": 480, "protein": 32}, {"name": "سردين مشوي مع شلاطة", "emoji": "🐟", "kcal": 380, "protein": 30}, {"name": "رشتة بالدجاج والخضار", "emoji": "🍜", "kcal": 430, "protein": 33}, {"name": "طاجين الزيتون بالدجاج", "emoji": "🫒", "kcal": 420, "protein": 34}, {"name": "طاجين القرنبيط بالدجاج", "emoji": "🥦", "kcal": 390, "protein": 32}, {"name": "كسكس بالحوت (فيليه مشوي)", "emoji": "🐠", "kcal": 410, "protein": 36}, {"name": "شوربة الفريك بالدجاج", "emoji": "🍲", "kcal": 350, "protein": 28}, {"name": "بطاطا حلوة مخبوزة بالدجاج", "emoji": "🍠", "kcal": 400, "protein": 30}, {"name": "ملوخية بلحم بقري قليل الدسم", "emoji": "🥬", "kcal": 380, "protein": 30}, {"name": "خضار سوتيه بالزيتون الجزائري", "emoji": "🥗", "kcal": 300, "protein": 12}, {"name": "صدر دجاج مشوي مع أرز بني", "emoji": "🍗", "kcal": 420, "protein": 40}, {"name": "بايص (فول) بالزيتون والكمون", "emoji": "🫘", "kcal": 340, "protein": 20}, {"name": "شلاطة ركابة مع خبز كامل", "emoji": "🌶️", "kcal": 310, "protein": 14}, {"name": "حساء الشعير بالخضار", "emoji": "🥣", "kcal": 330, "protein": 16}, {"name": "طاجين اللحم بالبرقوق (بدون سكر)", "emoji": "🍖", "kcal": 460, "protein": 35}, {"name": "سمك القاروص مشوي بالأعشاب", "emoji": "🐟", "kcal": 350, "protein": 38}, {"name": "دجاج محشي بالكوسا والفلفل", "emoji": "🫑", "kcal": 380, "protein": 35}, {"name": "كسكس بالحمص والخضار (نباتي)", "emoji": "🌱", "kcal": 380, "protein": 15}, {"name": "شخشوخة بالدجاج (قليلة السمن)", "emoji": "🍝", "kcal": 440, "protein": 32}, {"name": "طاجين الكفتة بالبيض والخضار", "emoji": "🍳", "kcal": 420, "protein": 36}, {"name": "شوربة الشوفان بالدجاج", "emoji": "🥣", "kcal": 340, "protein": 26}, {"name": "سمك موسى مشوي بالليمون", "emoji": "🐠", "kcal": 340, "protein": 37}, {"name": "بطاطا مسلوقة مع تونة وبيض", "emoji": "🥔", "kcal": 390, "protein": 28}, {"name": "سباكيتي بالدجاج والخضار", "emoji": "🍝", "kcal": 450, "protein": 34}, {"name": "ورق عنب محشو أرز ولحم قليل الدسم", "emoji": "🍃", "kcal": 380, "protein": 24}, {"name": "شوربة القمح (بوركوك)", "emoji": "🥣", "kcal": 350, "protein": 22}, {"name": "طاجين الباذنجان بالدجاج (بدون قلي)", "emoji": "🍆", "kcal": 370, "protein": 31}, {"name": "سلطة الحمص بالطحينة", "emoji": "🥗", "kcal": 320, "protein": 14}, {"name": "لوبيا بالزيت والكمون", "emoji": "🫘", "kcal": 330, "protein": 17}, {"name": "كسكس بالتونة والخضار", "emoji": "🐟", "kcal": 400, "protein": 32}, {"name": "حساء البطاطا والكراث بالدجاج", "emoji": "🥣", "kcal": 360, "protein": 25}, {"name": "طاجين اللحم بالحمص والسبانخ", "emoji": "🥩", "kcal": 450, "protein": 36}, {"name": "دجاج محمر بالزيتون والليمون", "emoji": "🍋", "kcal": 400, "protein": 38}, {"name": "شوربة كرعين البقر خفيفة", "emoji": "🍲", "kcal": 300, "protein": 24}, {"name": "دجاج مقلي بالزيت الزيتون مع سلطة", "emoji": "🍗", "kcal": 410, "protein": 39}, {"name": "طاجين الجزر والبازلاء بالدجاج", "emoji": "🥕", "kcal": 380, "protein": 30}, {"name": "سلطة طماطم بالبصل والتونة", "emoji": "🍅", "kcal": 280, "protein": 22}, {"name": "كبدة غنم بالبصل مع خبز كامل", "emoji": "🧅", "kcal": 390, "protein": 34}];
+const brk   = [{"name": "بيض أومليت بالخضار وخبز القمح الكامل", "emoji": "🍳", "kcal": 350, "protein": 22}, {"name": "مسمن الشوفان بالعسل", "emoji": "🥞", "kcal": 420, "protein": 14}, {"name": "كسرة مع زيت الزيتون والتين المجفف", "emoji": "🫒", "kcal": 320, "protein": 8}, {"name": "شوفان بالحليب والموز والتمر", "emoji": "🥣", "kcal": 380, "protein": 13}, {"name": "رقيف بالبيض والزيتون", "emoji": "🫓", "kcal": 340, "protein": 16}, {"name": "كريمة تمر بالحليب واللوز", "emoji": "🥛", "kcal": 400, "protein": 15}, {"name": "جبن قليل الدسم مع خبز محمص وتمر", "emoji": "🧀", "kcal": 330, "protein": 18}, {"name": "سموذي تمر بالموز والحليب", "emoji": "🥤", "kcal": 350, "protein": 12}, {"name": "تمر وحليب ومكسرات (طاقة الصحراء)", "emoji": "🌰", "kcal": 450, "protein": 16}, {"name": "شربة فريك بالحليب صباحية", "emoji": "🥣", "kcal": 320, "protein": 14}, {"name": "بيض مسلوق مع أفوكادو وخبز كامل", "emoji": "🥑", "kcal": 340, "protein": 18}, {"name": "حليب بالشعير والتمر", "emoji": "🥛", "kcal": 340, "protein": 13}, {"name": "قراص صحية بالبيض والزعتر", "emoji": "🫓", "kcal": 330, "protein": 15}, {"name": "خبز بركوكس محشي بالبيض", "emoji": "🥪", "kcal": 360, "protein": 20}, {"name": "كسكس حلو صباحي باللبن", "emoji": "🥣", "kcal": 380, "protein": 12}];
+
+function card(m,i){
+  return `<div class="card" style="animation-delay:${i*35}ms">
+    <span class="emoji">${m.emoji}</span>
+    <h3>${m.name}</h3>
+    <div class="meta">
+      <span class="pill">🔥 ${m.kcal} سعرة</span>
+      <span class="pill gold">💪 ${m.protein}g بروتين</span>
+    </div>
+  </div>`;
+}
+
+const mealsGrid = document.getElementById('mealsGrid');
+function renderMeals(f){
+  let list = meals;
+  if(f==='low')  list = meals.filter(m=>m.kcal<=380);
+  if(f==='high') list = meals.filter(m=>m.protein>=30);
+  mealsGrid.innerHTML = list.map(card).join('');
+}
+renderMeals('all');
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+  c.classList.add('active'); renderMeals(c.dataset.f);
+}));
+
+document.getElementById('brkGrid').innerHTML = brk.map(card).join('');
+
+const items = "🫒 زيت الزيتون البلدي ✦ 🌾 الكسكس ✦ 🌾 الفريك ✦ 🫘 الحمص ✦ 🐟 السردين ✦ 🍇 التمر الصحرواي ✦ 🥚 البيض ✦ 🍗 الدجاج البلدي ✦ 🥛 الحليب ✦ 🫓 الكسرة ✦ 🧅 البصل ✦ 🍅 الطماطم ✦ 🌿 الكمون ✦ ";
+document.getElementById('marquee').innerHTML = items.repeat(4);
+
+/* ظهور عند التمرير */
+const io = new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
